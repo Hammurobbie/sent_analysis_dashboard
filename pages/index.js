@@ -5,6 +5,8 @@ import hiltonLogo from "../images/hilton_logo_blue.png";
 
 import NavBar from "../components/NavBar";
 import Results from "../components/Results";
+import Filters from "../components/Filters";
+import SearchBar from "../components/SearchBar";
 
 export default function Home() {
   return (
@@ -20,7 +22,9 @@ export default function Home() {
 
       <main className={Main}>
         <NavBar />
+        <SearchBar />
         <Results />
+        <Filters />
       </main>
 
       <footer className={Footer}>
