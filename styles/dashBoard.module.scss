@@ -99,7 +99,7 @@
     border-bottom: none;
     background: $a;
     border-color: $d !important;
-    color: $d
+    color: $c;
   }
 
   input:focus {
@@ -107,7 +107,7 @@
   }
 
   ::placeholder {
-    color: $d
+    color: $c;
   }
 }
 
@@ -170,6 +170,7 @@
   align-items: flex-end;
   width: 100%;
   font-size: 1.3rem;
+  color: $c;
 
   ul {
     padding: 0;
