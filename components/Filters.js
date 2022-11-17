@@ -7,13 +7,14 @@ const Filters = () => {
       <div>
         <ul>
           <li>
-            <input type="checkbox" name="twitter" /> Twitter
+            <input type="checkbox" name="twitter" defaultChecked /> Twitter
           </li>
           <li>
-            <input type="checkbox" name="google" /> Google
+            <input type="checkbox" name="google" defaultChecked /> Google
           </li>
           <li>
-            <input type="checkbox" name="trip_advisor" /> Trip Advisor
+            <input type="checkbox" name="trip_advisor" defaultChecked /> Trip
+            Advisor
           </li>
         </ul>
       </div>
@@ -21,10 +22,10 @@ const Filters = () => {
         {" "}
         <ul>
           <li>
-            <input type="checkbox" name="twitter" /> Last 30 days
+            <input type="checkbox" name="twitter" defaultChecked /> All time
           </li>
           <li>
-            <input type="checkbox" name="google" /> Last 10 days
+            <input type="checkbox" name="google" /> Last 30 days
           </li>
           <li>
             <input type="checkbox" name="trip_advisor" /> Today

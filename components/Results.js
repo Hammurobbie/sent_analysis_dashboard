@@ -7,8 +7,7 @@ import {
   SearchDiv,
 } from "../styles/dashBoard.module.scss";
 
-const Results = () => {
-  const [curResult, setCurResult] = useState(null);
+const Results = ({ curResult }) => {
   return (
     <div className={ResultsCont}>
       <div

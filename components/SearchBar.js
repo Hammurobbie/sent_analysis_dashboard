@@ -2,9 +2,16 @@ import React from "react";
 import Typed from "react-typed";
 import { SearchCont } from "../styles/dashBoard.module.scss";
 
-const SearchBar = () => {
+const SearchBar = ({ handleSubmit, setSearchValue, setCurResult }) => {
+  const handleInput = (e) => {
+    setSearchValue(e.target.value);
+    if (!e.target.value) {
+      setCurResult(null);
+    }
+  };
+
   return (
-    <div className={SearchCont}>
+    <form onSubmit={handleSubmit} className={SearchCont}>
       <Typed
         strings={[
           "Search by hotel",
@@ -20,9 +27,9 @@ const SearchBar = () => {
         attr="placeholder"
         loop
       >
-        <input type="text" />
+        <input onChange={handleInput} type="text" />
       </Typed>
-    </div>
+    </form>
   );
 };
 
