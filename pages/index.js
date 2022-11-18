@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import axios from "axios";
@@ -9,6 +9,7 @@ import NavBar from "../components/NavBar";
 import Results from "../components/Results";
 import Filters from "../components/Filters";
 import SearchBar from "../components/SearchBar";
+import PointlessBinary from "../components/PointlessBinary";
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState("");
@@ -29,6 +30,13 @@ export default function Home() {
     "Analyzing ..",
     "Analyzing .",
   ]);
+  const [runLog, setRunLog] = useState(Date.now());
+  useEffect(() => {
+    const interval = setInterval(() => setRunLog(Date.now()), 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -81,6 +89,7 @@ export default function Home() {
           typedString={typedString}
           curResult={curResult}
         />
+        <PointlessBinary runLog={runLog} />
       </main>
 
       <footer className={Footer}>

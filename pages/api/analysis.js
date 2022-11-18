@@ -6,5 +6,5 @@ export default function handler(req, res) {
       scores: { positive: 0.8752, neutral: 0.0879, negative: 0.0369 },
       key_words: ["hospitable", "clean", "breathtaking"],
     });
-  }, 3000);
+  }, 6000);
 }
