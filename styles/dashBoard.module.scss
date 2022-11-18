@@ -92,13 +92,14 @@
   input {
     font-family: $bit;
     font-size: 1.5rem;
+    border-style: solid;
     border-radius: 5px;
     border-width: 3px;
     padding: 5px 10px;
     border-top: none;
     border-bottom: none;
     background: $a;
-    border-color: $d !important;
+    border-color: $f !important;
     color: $c;
   }
 
@@ -178,6 +179,10 @@
 
   li {
     list-style: none;
+  }
+
+  input[type="checkbox"] {
+    accent-color: $g;
   }
 }
 
