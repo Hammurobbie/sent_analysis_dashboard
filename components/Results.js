@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Typed from "react-typed";
 import {
   ResultsCont,
@@ -7,7 +7,7 @@ import {
   SearchDiv,
 } from "../styles/dashBoard.module.scss";
 
-const Results = ({ curResult }) => {
+const Results = ({ curResult, typedString }) => {
   return (
     <div className={ResultsCont}>
       <div
@@ -23,16 +23,7 @@ const Results = ({ curResult }) => {
           <p>Awaiting Input</p>
         ) : curResult === "searching" ? (
           <Typed
-            strings={[
-              "Analyzing Tweets",
-              "Analyzing Google Reviews",
-              "Analyzing Trip Advisor Ratings",
-              "Analyzing .",
-              "Analyzing ..",
-              "Analyzing ...",
-              "Analyzing ..",
-              "Analyzing .",
-            ]}
+            strings={typedString}
             typeSpeed={40}
             backSpeed={50}
             loop

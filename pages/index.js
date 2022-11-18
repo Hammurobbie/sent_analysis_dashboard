@@ -13,12 +13,22 @@ import SearchBar from "../components/SearchBar";
 export default function Home() {
   const [searchValue, setSearchValue] = useState("");
   const [curResult, setCurResult] = useState(null);
+  const [timeFilter, setTimeFilter] = useState("all_time");
   const [sourceFilter, setSourceFilter] = useState([
     "twitter",
     "google",
     "trip_advisor",
   ]);
-  const [timeFilter, setTimeFilter] = useState("all_time");
+  const [typedString, setTypedString] = useState([
+    "Analyzing Tweets",
+    "Analyzing Google Reviews",
+    "Analyzing Trip Advisor Ratings",
+    "Analyzing .",
+    "Analyzing ..",
+    "Analyzing ...",
+    "Analyzing ..",
+    "Analyzing .",
+  ]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +40,7 @@ export default function Home() {
         .post("/api/analysis", {
           search_value: searchValue,
           sources: "twitter",
-          time: "30 days",
+          time: timeFilter,
         })
         .then((res) => {
           console.log(res.data);
@@ -61,12 +71,13 @@ export default function Home() {
           setCurResult={setCurResult}
           setSearchValue={setSearchValue}
         />
-        <Results curResult={curResult} />
+        <Results curResult={curResult} typedString={typedString} />
         <Filters
           sourceFilter={sourceFilter}
           setSourceFilter={setSourceFilter}
-          timeFilter={timeFilter}
           setTimeFilter={setTimeFilter}
+          setTypedString={setTypedString}
+          typedString={typedString}
         />
       </main>
 

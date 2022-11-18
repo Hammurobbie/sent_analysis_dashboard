@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <nav className={Nav}>
       <div className={NavLeft}>
-        <Image src={vintageHiltonLogo} alt="Vintage Hilton Logo" />
+        <Image priority src={vintageHiltonLogo} alt="Vintage Hilton Logo" />
         <p>Hilton Sentiment Analysis Dashboard</p>
       </div>
       <div className={NavRight}>
