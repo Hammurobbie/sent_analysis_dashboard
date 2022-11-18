@@ -227,6 +227,12 @@
     width: 310px;
     font-size: 1.4rem;
   }
+
+  .FiltersDiv {
+    li {
+      padding: 5px 0;
+    }
+  }
 }
 
 @keyframes pulse {
