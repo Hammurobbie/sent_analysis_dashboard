@@ -7,6 +7,7 @@ const Filters = ({
   setTimeFilter,
   setTypedString,
   typedString,
+  curResult,
 }) => {
   const handleChange = (e) => {
     if (e.target.className) {
@@ -53,6 +54,7 @@ const Filters = ({
               type="checkbox"
               name="twitter"
               defaultChecked
+              disabled={curResult === "searching"}
             />{" "}
             Twitter
           </li>
@@ -62,6 +64,7 @@ const Filters = ({
               type="checkbox"
               name="google"
               defaultChecked
+              disabled={curResult === "searching"}
             />{" "}
             Google
           </li>
@@ -71,6 +74,7 @@ const Filters = ({
               type="checkbox"
               name="trip_advisor"
               defaultChecked
+              disabled={curResult === "searching"}
             />{" "}
             Trip Advisor
           </li>
@@ -86,6 +90,7 @@ const Filters = ({
               type="checkbox"
               name="all_time"
               defaultChecked
+              disabled={curResult === "searching"}
             />{" "}
             All time
           </li>
@@ -95,6 +100,7 @@ const Filters = ({
               onChange={handleChange}
               type="checkbox"
               name="30_days"
+              disabled={curResult === "searching"}
             />{" "}
             Last 30 days
           </li>
@@ -104,6 +110,7 @@ const Filters = ({
               onChange={handleChange}
               type="checkbox"
               name="today"
+              disabled={curResult === "searching"}
             />{" "}
             Today
           </li>

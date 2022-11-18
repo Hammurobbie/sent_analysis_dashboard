@@ -70,6 +70,7 @@ export default function Home() {
           handleSubmit={handleSubmit}
           setCurResult={setCurResult}
           setSearchValue={setSearchValue}
+          curResult={curResult}
         />
         <Results curResult={curResult} typedString={typedString} />
         <Filters
@@ -78,6 +79,7 @@ export default function Home() {
           setTimeFilter={setTimeFilter}
           setTypedString={setTypedString}
           typedString={typedString}
+          curResult={curResult}
         />
       </main>
 

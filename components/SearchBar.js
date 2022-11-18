@@ -2,7 +2,12 @@ import React from "react";
 import Typed from "react-typed";
 import { SearchCont } from "../styles/dashBoard.module.scss";
 
-const SearchBar = ({ handleSubmit, setSearchValue, setCurResult }) => {
+const SearchBar = ({
+  handleSubmit,
+  setSearchValue,
+  setCurResult,
+  curResult,
+}) => {
   const handleInput = (e) => {
     setSearchValue(e.target.value);
     if (!e.target.value) {
@@ -27,7 +32,11 @@ const SearchBar = ({ handleSubmit, setSearchValue, setCurResult }) => {
         attr="placeholder"
         loop
       >
-        <input onChange={handleInput} type="text" />
+        <input
+          disabled={curResult === "searching"}
+          onChange={handleInput}
+          type="text"
+        />
       </Typed>
     </form>
   );
