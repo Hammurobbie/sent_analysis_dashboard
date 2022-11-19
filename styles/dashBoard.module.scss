@@ -32,7 +32,6 @@
   align-items: center;
   font-family: $bit;
   position: relative;
-  overflow: hidden;
 }
 
 .NavLeft {
@@ -375,6 +374,10 @@
     li {
       padding: 5px 0;
     }
+  }
+
+  .Wrapper {
+    overflow: hidden !important;
   }
 }
 

@@ -10,6 +10,7 @@ import {
   Overlay2,
   Overlay3,
   Overlay4,
+  Wrapper,
 } from "../styles/dashBoard.module.scss";
 import hiltonLogo from "../images/hilton_logo_blue.png";
 import scanlines from "../images/scanlines.png";
@@ -89,7 +90,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
+      <div className={Wrapper}>
         <Image className={Overlay} alt="crt overlay" src={scanlines} />
         <Image className={Overlay2} alt="crt overlay" src={scanlines} />
         <Image className={Overlay3} alt="crt overlay" src={scanlines} />
