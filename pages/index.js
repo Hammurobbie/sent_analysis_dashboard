@@ -52,7 +52,7 @@ export default function Home() {
   useEffect(() => {
     const searchBar = document?.getElementById("search_bar");
     searchBar?.focus();
-  }, []);
+  }, [curResult]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

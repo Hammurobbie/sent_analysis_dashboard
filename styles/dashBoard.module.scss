@@ -5,6 +5,7 @@
     z-index: 1;
     position: absolute;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .Overlay2 {
@@ -359,6 +360,14 @@
   .SearchDiv, .SearchingDiv, .ResultsDiv {
     width: 310px;
     font-size: 1.4rem;
+  }
+
+  .ResultsDiv {
+    width: 350px;
+  }
+  
+  .ResultsInner {
+    padding: 0 15px;
   }
 
   .FiltersDiv {
