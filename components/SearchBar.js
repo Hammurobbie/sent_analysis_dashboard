@@ -5,18 +5,26 @@ import { SearchCont } from "../styles/dashBoard.module.scss";
 const SearchBar = ({
   handleSubmit,
   setSearchValue,
+  searchValue,
   setCurResult,
   curResult,
+  errorMessage,
+  setErrorMessage,
 }) => {
   const handleInput = (e) => {
     setSearchValue(e.target.value);
+    setErrorMessage("");
     if (!e.target.value) {
       setCurResult(null);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className={SearchCont}>
+    <form
+      style={{ height: curResult?.scores ? "40px" : "" }}
+      className={SearchCont}
+      onSubmit={handleSubmit}
+    >
       <Typed
         strings={[
           "Search by hotel",
@@ -36,8 +44,15 @@ const SearchBar = ({
           disabled={curResult === "searching"}
           onChange={handleInput}
           type="text"
+          id="search_bar"
+          autoComplete="off"
         />
       </Typed>
+      {searchValue && !curResult ? (
+        <button>Press Enter to search</button>
+      ) : (
+        <em>{errorMessage}</em>
+      )}
     </form>
   );
 };

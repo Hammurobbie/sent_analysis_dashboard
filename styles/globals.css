@@ -6,6 +6,9 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background: #ebe0c8;
   overflow: hidden;
+  filter: blur(0.4px) contrast(88%) sepia(10%);
+  animation: surge 3s;
+  animation-iteration-count: infinite;
 }
 
 a {
@@ -15,4 +18,37 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+@keyframes surge {
+0% {
+  filter: brightness(101%) blur(0.4px) contrast(88%) sepia(10%);
+}
+10% {
+  filter: brightness(100%) blur(0.4px) contrast(88%) sepia(10%);
+}
+20% {
+  filter: brightness(98%) blur(0.4px) contrast(88%) sepia(10%);
+}
+30% {
+  filter: brightness(102%) blur(0.4px) contrast(88%) sepia(10%);
+}
+40% {
+  filter: brightness(100%) blur(0.4px) contrast(88%) sepia(10%);
+}
+50% {
+}
+60% {
+  filter: brightness(97%) blur(0.4px) contrast(88%) sepia(10%);
+}
+70% {
+  filter: brightness(100%) blur(0.4px) contrast(88%) sepia(10%);
+}
+80% {
+}
+90% {
+  filter: brightness(100%) blur(0.4px) contrast(88%) sepia(10%);
+}
+100% {
+}
 }

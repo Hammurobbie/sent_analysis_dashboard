@@ -20,7 +20,7 @@ const PointlessBinary = ({ runLog }) => {
 
     const randBin = generateRandomBinary(24);
     var div = document.createElement("div");
-    const colors = ["#f1b444", "#7ab35b", "#75d0c4", "#e63e1c"];
+    const colors = ["#cf9529", "#7ab35b", "#75d0c4", "#e63e1c"];
     const randInd = Math.floor(Math.random() * (colors.length - 1 - 0 + 1) + 0);
     const randColor = colors[randInd];
     div.style.color = randColor;

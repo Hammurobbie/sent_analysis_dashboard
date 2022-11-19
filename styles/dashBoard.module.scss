@@ -1,9 +1,29 @@
 @import "./variables.module.scss";
 
+.Overlay, .Overlay2, .Overlay3, .Overlay4 {
+    opacity: .15;
+    z-index: 1;
+    position: absolute;
+    pointer-events: none;
+}
+
+.Overlay2 {
+  left: 1920px;
+}
+
+.Overlay3 {
+  top: 1200px;
+}
+
+.Overlay4 {
+  top: 1200px;
+  left: 1920px;
+}
+
 .Main {
   min-height: 90vh;
   width: 100vw;
-  padding-top: 50px;
+  padding-top: 70px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -19,7 +39,7 @@
   align-items: center;
   width: 100%;
   font-family: inherit;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   text-align: center;
   img {
     height: 40px;
@@ -27,7 +47,7 @@
   }
 }
 
-.NavRight {
+.NavRight, .NavRightSpeaking {
   display: flex;
   align-items: center;
 
@@ -52,6 +72,14 @@
     animation: none;
     box-shadow: inset 0px 0px 1px $h, 0 0 10px $h;
     animation: none;
+  }
+}
+
+.NavRightSpeaking {
+
+  img {
+    border: $h 3px solid;
+    animation-name: pulse_red;
   }
 }
 
@@ -89,6 +117,10 @@
 }
 
 .SearchCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100px;
   
   input {
     font-family: $bit;
@@ -110,6 +142,29 @@
 
   ::placeholder {
     color: $c;
+  }
+
+  em {
+    margin-top: 35px;
+    color: $h;
+    font-size: 1.175rem;
+  }
+
+  button {
+    margin: 30px 0 0 0;
+    background: transparent;
+    font-family: $bit;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: $e 2px solid;
+    color: $e;
+    font-size: 1.175rem;
+    animation-name: pulse;
+    animation-duration: 3.0s;
+    animation-timing-function: ease-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
   }
 }
 
@@ -158,12 +213,40 @@
   justify-content: center;
   align-items: center;
   width: 450px;
-  height: 80px;
+  height: 180px;
   border-radius: 5px;
   box-shadow: inset 0px 0px 1px $e, 0 0 10px $e;
   border: $e 3px solid;
   transition: ease-in-out 0.3s;
-  color: $e;
+  color: $c;
+
+  h1 {
+    margin: 0 0 10px 0;
+    font-size: 1.7rem;
+  }
+
+  ul {
+    margin: 0px 0 10px 0;
+    padding-left: 0;
+  }
+
+  li {
+    font-size: 1.5rem;
+    list-style: none;
+    margin: 5px 0 5px -12px;
+  }
+
+  li:before {
+    padding-left: 2px;
+    content: "\005f";
+  }
+}
+
+.ResultsInner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 50px;
 }
 
 .FiltersDiv {
@@ -184,6 +267,7 @@
 
   input[type="checkbox"] {
     accent-color: $g;
+    cursor: pointer;
   }
 }
 
@@ -218,7 +302,7 @@
   left: 0;
   height: 300px;
   font-family: $bit;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   border-right: 1px solid $b;
   clear: both;
   margin-left: 20px;
@@ -237,7 +321,6 @@
   justify-content: flex-start;
   color: $c;
   height: 300px;
-  overflow: auto;
 
   div {
     border-bottom: 0 !important;
@@ -249,12 +332,12 @@
   position: absolute;
   bottom: 0;
   left: 0px;
-  height: 20%;
+  height: 50%;
   width: 100%;
   content: "";
   background: linear-gradient(
     to top,
-    rgba(235, 224, 200, 1) 35%,
+    rgba(235, 224, 200, 1) 2%,
     rgba(235, 224, 200, 0) 90%
   );
   pointer-events: none;
@@ -285,10 +368,10 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
   .PointlessBinaryStyles {
-    height: 60px;
+    height: 55px;
     border-right: none;
     clear: both;
     margin-left: 15px;
@@ -299,7 +382,12 @@
   }
   
   .PointlessBinaryDiv:after {
-    height: 50%;
+    height: 60%;
+    background: linear-gradient(
+      to top,
+      rgba(235, 224, 200, 1) 20%,
+      rgba(235, 224, 200, 0) 90%
+    );
   }
 
 }

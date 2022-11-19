@@ -4,7 +4,11 @@ export default function handler(req, res) {
   setTimeout(() => {
     res.status(200).json({
       scores: { positive: 0.8752, neutral: 0.0879, negative: 0.0369 },
-      key_words: ["hospitable", "clean", "breathtaking"],
+      key_words: [
+        { sentiment: "positive", word: "hospitable" },
+        { sentiment: "negative", word: "dirty" },
+        { sentiment: "neutral", word: "hotel" },
+      ],
     });
   }, 6000);
 }
