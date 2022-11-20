@@ -27,8 +27,9 @@ const SearchBar = ({
     >
       <Typed
         strings={[
-          "Search by hotel",
-          "Search by brand",
+          "Search 'Beverly Hilton'",
+          "Search 'Waldorf Astoria'",
+          "Search 'Hilton'",
           "Search .",
           "Search ..",
           "Search ...",
