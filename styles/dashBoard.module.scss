@@ -5,7 +5,6 @@
     z-index: 1;
     position: absolute;
     pointer-events: none;
-    overflow-x: hidden !important;
 }
 
 .Overlay2 {
@@ -349,7 +348,6 @@
 
   .Main {
     padding: 100px 0 50px 0;
-    overflow-x: hidden !important;
   }
 
   .Nav {
@@ -378,8 +376,13 @@
     }
   }
 
+  .Overlay2, .Overlay3, .Overlay4 {
+    display: none;
+}
+
   .Wrapper {
-    overflow-x: hidden !important;
+    overflow: hidden;
+    position: relative;
   }
 }
 
