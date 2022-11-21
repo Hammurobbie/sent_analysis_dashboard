@@ -21,7 +21,7 @@ const SearchBar = ({
 
   return (
     <form
-      style={{ height: curResult?.scores ? "40px" : "" }}
+      style={{ height: curResult?.scores ? "40px" : null }}
       className={SearchCont}
       onSubmit={handleSubmit}
     >

@@ -5,7 +5,6 @@
     z-index: 1;
     position: absolute;
     pointer-events: none;
-    overflow: hidden;
 }
 
 .Overlay2 {
@@ -125,11 +124,12 @@
   
   input {
     font-family: $bit;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     border-style: solid;
     border-radius: 5px;
     border-width: 3px;
     padding: 5px 10px;
+    width: 225px;
     border-top: none;
     border-bottom: none;
     background: $a;
@@ -378,6 +378,10 @@
 
   .Wrapper {
     overflow: hidden !important;
+  }
+
+  .Overlay2, .Overlay3, .Overlay4 {
+    display: none;
   }
 }
 
