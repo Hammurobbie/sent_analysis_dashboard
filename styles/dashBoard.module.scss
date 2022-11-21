@@ -1,7 +1,7 @@
 @import "./variables.module.scss";
 
 .Overlay, .Overlay2, .Overlay3, .Overlay4 {
-    opacity: .15;
+    opacity: .1;
     z-index: 1;
     position: absolute;
     pointer-events: none;
@@ -377,7 +377,7 @@
   }
 
   .Wrapper {
-    overflow: hidden !important;
+    overflow-x: hidden !important;
   }
 
   .Overlay, .Overlay2, .Overlay3, .Overlay4 {
