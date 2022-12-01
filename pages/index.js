@@ -69,10 +69,11 @@ export default function Home() {
           time: timeFilter,
         })
         .then((res) => {
+          console.log(res.data);
           setCurResult(res.data);
         })
         .catch((err) => {
-          // console.log(err.message);
+          console.log(err.message);
           setCurResult(null);
           setErrorMessage("No results found");
         });
