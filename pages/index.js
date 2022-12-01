@@ -69,13 +69,23 @@ export default function Home() {
           time: timeFilter,
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setCurResult(res.data);
         })
         .catch((err) => {
-          console.log(err.message);
+          // console.log(err.message);
           setCurResult(null);
           setErrorMessage("No results found");
+          setSearchValue("");
+          // dummy results for production preview when python fails vvv
+          // setCurResult({
+          //   scores: { positive: 0.8752, neutral: 0.0879, negative: 0.0369 },
+          //   key_words: [
+          //     { sentiment: "positive", word: "hospitable" },
+          //     { sentiment: "negative", word: "dirty" },
+          //     { sentiment: "neutral", word: "hotel" },
+          //   ]
+          // })
         });
     } else setErrorMessage("Please provide query");
   };

@@ -25,7 +25,7 @@ const Results = ({ curResult, typedString }) => {
     } else setTopResult("positive");
   }, [curResult]);
 
-  console.log("real results:", curResult?.test);
+  if (curResult?.test) console.log("real results:", curResult?.test);
 
   return (
     <div className={ResultsCont}>
