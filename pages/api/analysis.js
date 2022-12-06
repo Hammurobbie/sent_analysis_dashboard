@@ -11,16 +11,26 @@ export default function handler(req, res) {
   };
 
   PythonShell.run("analysis.py", options, function (err, results) {
-    if (err) res.status(500).json(err);
+    if (err) return res.status(500).json(err);
+    if (results?.[0] === "no results") {
+      res.status(200).json({ res: results[0] });
+    } else {
+      let result = results?.[0].replace(/'/g, '"');
+      result = JSON.parse(result);
+      // TODO: Connect keywords
 
-    res.status(200).json({
-      scores: { positive: 0.8752, neutral: 0.0879, negative: 0.0369 },
-      key_words: [
-        { sentiment: "positive", word: "hospitable" },
-        { sentiment: "negative", word: "dirty" },
-        { sentiment: "neutral", word: "hotel" },
-      ],
-      test: results,
-    });
+      res.status(200).json({
+        scores: {
+          positive: result["pos_tot"],
+          neutral: result["neu_tot"],
+          negative: result["neg_tot"],
+        },
+        key_words: [
+          { sentiment: "positive", word: "hospitable" },
+          { sentiment: "negative", word: "dirty" },
+          { sentiment: "neutral", word: "hotel" },
+        ],
+      });
+    }
   });
 }

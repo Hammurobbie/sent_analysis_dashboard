@@ -60,8 +60,11 @@ def runModel(text):
 
     ranking = np.argsort(scores)
     ranking = ranking[::-1]
+    results = { "text": text }
     for i in range(scores.shape[0]):
         l = labels[ranking[i]]
         s = scores[ranking[i]]
-        print(f"{i+1} {l} {np.round(float(s), 4)}")
-    print(text)
+        results[l] = np.round(float(s), 4)
+    #     print(f"{i+1} {l} {np.round(float(s), 4)}")
+    # print(text)
+    return results

@@ -61,31 +61,27 @@ export default function Home() {
     if (searchValue !== "") {
       setCurResult("searching");
       const searchBar = document?.getElementById("search_bar");
+      const finalSearchValue = searchValue.replace(" ", "");
       searchBar?.blur();
       axios
         .post("/api/analysis", {
-          search_value: searchValue,
-          sources: "twitter",
+          search_value: finalSearchValue,
+          sources: sourceFilter,
           time: timeFilter,
         })
         .then((res) => {
           // console.log(res.data);
-          setCurResult(res.data);
+          if (res?.data?.res === "no results") {
+            setCurResult(null);
+            setErrorMessage("No results found");
+            setSearchValue("");
+          } else setCurResult(res.data);
         })
         .catch((err) => {
           // console.log(err.message);
           setCurResult(null);
           setErrorMessage("No results found");
           setSearchValue("");
-          // dummy results for production preview when python fails vvv
-          // setCurResult({
-          //   scores: { positive: 0.8752, neutral: 0.0879, negative: 0.0369 },
-          //   key_words: [
-          //     { sentiment: "positive", word: "hospitable" },
-          //     { sentiment: "negative", word: "dirty" },
-          //     { sentiment: "neutral", word: "hotel" },
-          //   ]
-          // })
         });
     } else setErrorMessage("Please provide query");
   };
