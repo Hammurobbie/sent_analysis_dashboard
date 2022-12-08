@@ -5,17 +5,16 @@ import numpy as np
 from scipy.special import softmax
 import csv
 import urllib.request
+from pointless_words import pointless_words
+import string
 
-def runModel(text):
+def runModel(text, query=None):
     def preprocess(text):
         new_text = []
     
+        text = text.translate(str.maketrans('', '', string.punctuation))
         for t in text.split(" "):
-            if(t.startswith('@') and len(t) > 1):
-                t = '@user'
-            elif (t.startswith('http')):
-                t = 'http'
-            elif (t.startswith('#')):
+            if(t.startswith('@') or t.isdigit() or t.startswith('http') or t.startswith('#') or t.lower() in pointless_words or len(t) < 2 or t == query):
                 t = ''
             new_text.append(t)
         return " ".join(new_text)
@@ -65,6 +64,5 @@ def runModel(text):
         l = labels[ranking[i]]
         s = scores[ranking[i]]
         results[l] = np.round(float(s), 4)
-    #     print(f"{i+1} {l} {np.round(float(s), 4)}")
-    # print(text)
+
     return results

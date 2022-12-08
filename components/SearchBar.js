@@ -47,6 +47,7 @@ const SearchBar = ({
           type="text"
           id="search_bar"
           autoComplete="off"
+          value={searchValue}
         />
       </Typed>
       {searchValue && !curResult ? (

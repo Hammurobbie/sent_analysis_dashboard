@@ -17,7 +17,6 @@ export default function handler(req, res) {
     } else {
       let result = results?.[0].replace(/'/g, '"');
       result = JSON.parse(result);
-      // TODO: Connect keywords
 
       res.status(200).json({
         scores: {
@@ -26,9 +25,18 @@ export default function handler(req, res) {
           negative: result["neg_tot"],
         },
         key_words: [
-          { sentiment: "positive", word: "hospitable" },
-          { sentiment: "negative", word: "dirty" },
-          { sentiment: "neutral", word: "hotel" },
+          {
+            sentiment: result["com_words"][0][2],
+            word: result["com_words"][0][0],
+          },
+          {
+            sentiment: result["com_words"][1][2],
+            word: result["com_words"][1][0],
+          },
+          {
+            sentiment: result["com_words"][2][2],
+            word: result["com_words"][2][0],
+          },
         ],
       });
     }
