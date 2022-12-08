@@ -69,4 +69,6 @@ pointless_words = [
     "into",
     "want",
     "need",
+    "it's",
+    "its",
 ]
