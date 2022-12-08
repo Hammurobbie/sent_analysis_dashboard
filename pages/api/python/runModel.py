@@ -14,7 +14,7 @@ def runModel(text, query=None):
     
         text = text.translate(str.maketrans('', '', string.punctuation))
         for t in text.split(" "):
-            if(t.startswith('@') or t.isdigit() or t.startswith('http') or t.startswith('#') or t.lower() in pointless_words or len(t) < 2 or t == query):
+            if(t.startswith('@') or t.isdigit() or t.startswith('http') or t.startswith('#') or t.lower() in pointless_words or len(t) < 2 or t.lower() == query):
                 t = ''
             new_text.append(t)
         return " ".join(new_text)
