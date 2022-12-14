@@ -7,8 +7,17 @@ import csv
 import urllib.request
 from pointless_words import pointless_words
 import string
+import socket
+import urllib3
+import urllib3.util.connection as urllib3_cn
 
 def runModel(text, query=None):
+
+    # IPv4 lag fix
+    def allowed_gai_family(): 
+        return socket.AF_INET
+    urllib3_cn.allowed_gai_family = allowed_gai_family
+
     def preprocess(text):
         new_text = []
     
@@ -31,10 +40,18 @@ def runModel(text, query=None):
     # download label mapping
     labels=[]
     mapping_link = f"https://raw.githubusercontent.com/cardiffnlp/tweeteval/main/datasets/{task}/mapping.txt"
-    with urllib.request.urlopen(mapping_link) as f:
-        html = f.read().decode('utf-8').split("\n")
-        csvreader = csv.reader(html, delimiter='\t')
-    labels = [row[1] for row in csvreader if len(row) > 1]
+    http = urllib3.PoolManager()
+    res = http.request('GET', mapping_link)
+    # with urllib.request.urlopen(mapping_link) as f:
+        # html = f.read().decode('utf-8').split("\n")
+        # csvreader = csv.reader(html, delimiter='\t')
+    # labels = [row[1] for row in csvreader if len(row) > 1]
+    def format_res(n):
+        if (n):
+            return n[2:]
+
+    labels = res.data.decode('utf-8').split("\n")
+    labels = [*map(format_res, labels)]
 
     # PT
     model = AutoModelForSequenceClassification.from_pretrained(MODEL)

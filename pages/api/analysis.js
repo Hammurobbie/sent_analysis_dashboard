@@ -11,7 +11,7 @@ export default function handler(req, res) {
   };
 
   PythonShell.run("analysis.py", options, function (err, results) {
-    if (err) return res.status(500).json(err);
+    if (err) return res.status(500).json(err?.stack);
     if (results?.[0] === "no results") {
       res.status(200).json({ res: results[0] });
     } else {
