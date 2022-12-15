@@ -53,14 +53,14 @@ else:
             word3 = [w, c]
 
         if len(all_word_counts) == 0:
-            all_word_counts.append({"value": w, "count": 1})
+            all_word_counts.append({"value": w.lower(), "count": 1})
         else:
             for i, obj in enumerate(all_word_counts):
-                if obj["value"] == w:
+                if obj["value"] == w.lower():
                     all_word_counts[i]["count"] += 1
                     break
                 else:
-                    all_word_counts.append({"value": w, "count": 1})
+                    all_word_counts.append({"value": w.lower(), "count": 1})
                     break
 
     top_words = [word1,word2,word3]
