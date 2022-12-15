@@ -19,7 +19,7 @@ export default function handler(req, res) {
       result = JSON.parse(result);
 
       res.status(200).json({
-        scores: {
+        average_scores: {
           positive: result["pos_tot"],
           neutral: result["neu_tot"],
           negative: result["neg_tot"],
@@ -38,6 +38,8 @@ export default function handler(req, res) {
             word: result["com_words"][2][0],
           },
         ],
+        all_scores: result["all_scores"],
+        all_word_counts: result["all_word_counts"]
       });
     }
   });

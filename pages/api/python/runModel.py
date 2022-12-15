@@ -3,8 +3,6 @@ from transformers import TFAutoModelForSequenceClassification
 from transformers import AutoTokenizer
 import numpy as np
 from scipy.special import softmax
-import csv
-import urllib.request
 from pointless_words import pointless_words
 import string
 import socket
@@ -42,10 +40,6 @@ def runModel(text, query=None):
     mapping_link = f"https://raw.githubusercontent.com/cardiffnlp/tweeteval/main/datasets/{task}/mapping.txt"
     http = urllib3.PoolManager()
     res = http.request('GET', mapping_link)
-    # with urllib.request.urlopen(mapping_link) as f:
-        # html = f.read().decode('utf-8').split("\n")
-        # csvreader = csv.reader(html, delimiter='\t')
-    # labels = [row[1] for row in csvreader if len(row) > 1]
     def format_res(n):
         if (n):
             return n[2:]
