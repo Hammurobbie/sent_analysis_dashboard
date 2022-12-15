@@ -12,5 +12,5 @@ def getTweets(search_term):
 
     client = tweepy.Client(bearer_token=bearer_token, wait_on_rate_limit=True)
     
-    tweets = client.search_recent_tweets(query=query, max_results=count)
+    tweets = client.search_recent_tweets(query=query, max_results=count, expansions="author_id")
     return tweets
