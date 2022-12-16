@@ -99,7 +99,7 @@ const Results = ({ curResult, typedString }) => {
         )}
       </div>
     </div>
-    {!!curResult?.average_scores ?  (<a  href="/word-cloud" target="_blank" rel="noopener noreferrer " className={{fontSize: "2rem"}}>Word Cloud</a>) : null}
+    {curResult?.average_scores ?  (<a  href="/word-cloud" target="_blank" rel="noopener noreferrer " className={{fontSize: "2rem"}}>Word Cloud</a>) : null}
     </>
   );
 };
