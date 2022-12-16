@@ -9,37 +9,39 @@ import socket
 import urllib3
 import urllib3.util.connection as urllib3_cn
 
+
 def runModel(text, query=None):
 
     # IPv4 lag fix
-    def allowed_gai_family(): 
+    def allowed_gai_family():
         return socket.AF_INET
     urllib3_cn.allowed_gai_family = allowed_gai_family
 
     def preprocess(text):
         new_text = []
-    
+
         text = text.translate(str.maketrans('', '', string.punctuation))
         for t in text.split(" "):
-            if(t.startswith('@') or t.isdigit() or t.startswith('http') or t.startswith('#') or t.lower() in pointless_words or len(t) < 2 or t.lower() == query):
+            if (t.startswith('@') or t.isdigit() or t.startswith('http') or t.startswith('#') or t.lower() in pointless_words or len(t) < 2 or t.lower() == query):
                 t = ''
             new_text.append(t)
-        return " ".join(new_text)
+        return " ".join(new_text).replace('\n', ' ')
 
     # Tasks:
     # emoji, emotion, hate, irony, offensive, sentiment
     # stance/abortion, stance/atheism, stance/climate, stance/feminist, stance/hillary
 
-    task='sentiment'
+    task = 'sentiment'
     MODEL = f"cardiffnlp/twitter-roberta-base-{task}"
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL)
 
     # download label mapping
-    labels=[]
+    labels = []
     mapping_link = f"https://raw.githubusercontent.com/cardiffnlp/tweeteval/main/datasets/{task}/mapping.txt"
     http = urllib3.PoolManager()
     res = http.request('GET', mapping_link)
+
     def format_res(n):
         if (n):
             return n[2:]
@@ -53,6 +55,7 @@ def runModel(text, query=None):
     # model.save_pretrained(MODEL)
 
     text = preprocess(text)
+    text = text.encode('unicode_escape').decode('unicode_escape')
     encoded_input = tokenizer(text, return_tensors='pt')
     output = model(**encoded_input)
     scores = output[0][0].detach().numpy()
@@ -70,7 +73,7 @@ def runModel(text, query=None):
 
     ranking = np.argsort(scores)
     ranking = ranking[::-1]
-    results = { "text": text }
+    results = {"text": text}
     for i in range(scores.shape[0]):
         l = labels[ranking[i]]
         s = scores[ranking[i]]

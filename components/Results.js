@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Typed from "react-typed";
-import axios from "axios";
 import {
   ResultsCont,
   ResultsDiv,
@@ -11,25 +10,9 @@ import {
 
 const Results = ({ curResult, typedString }) => {
   const [topResult, setTopResult] = useState("positive");
-  const [weightedResult, setWeightedResult] = useState();
 
   useEffect(() => {
-    if (
-      weightedResult?.neutral > weightedResult?.positive &&
-      weightedResult?.neutral > weightedResult?.negative
-    ) {
-      setTopResult("neutral");
-    } else if (
-      weightedResult?.negative > weightedResult?.positive &&
-      weightedResult?.negative > weightedResult?.neutral
-    ) {
-      setTopResult("negative");
-    } else if (
-      weightedResult?.positive > weightedResult?.negative &&
-      weightedResult?.positive > weightedResult?.neutral
-    ) {
-      setTopResult("positive");
-    } else if (
+   if (
       curResult?.average_scores?.neutral > curResult?.average_scores?.positive &&
       curResult?.average_scores?.neutral > curResult?.average_scores?.negative
     ) {
@@ -40,23 +23,7 @@ const Results = ({ curResult, typedString }) => {
     ) {
       setTopResult("negative");
     } else setTopResult("positive");
-  }, [curResult, weightedResult]);
-
-  // TODO: get twitter user followers and recalculate 
-  // scores with weight based on tweet reach
-
-  // useEffect(() => {
-  //   if(curResult?.all_scores) {
-  //     axios
-  //     .post("/api/followers", { users: curResult?.all_scores })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //     });
-  //   }
-  // },[curResult?.all_scores]);
+  }, [curResult]);
 
   return (
     <div className={ResultsCont}>
@@ -86,18 +53,18 @@ const Results = ({ curResult, typedString }) => {
                 <li
                   style={{ color: topResult === "positive" ? "#7ab35b" : "" }}
                 >
-                  Positive: <span>{weightedResult?.positive || curResult?.average_scores?.positive}</span>
+                  Positive: <span>{curResult?.average_scores?.positive}</span>
                 </li>
                 <li style={{ color: topResult === "neutral" ? "#cf9529" : "" }}>
                   Neutral:{" "}
                   <span style={{ marginLeft: "9.5px" }}>
-                    {weightedResult?.neutral || curResult?.average_scores?.neutral}
+                    {curResult?.average_scores?.neutral}
                   </span>
                 </li>
                 <li
                   style={{ color: topResult === "negative" ? "#e63e1c" : "" }}
                 >
-                  Negative: <span>{weightedResult?.negative || curResult?.average_scores?.negative}</span>
+                  Negative: <span>{curResult?.average_scores?.negative}</span>
                 </li>
               </ul>
             </div>

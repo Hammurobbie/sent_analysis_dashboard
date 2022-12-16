@@ -98,10 +98,10 @@ export default function Home() {
       </Head>
 
       <div className={Wrapper}>
-        <Image className={Overlay} alt="crt overlay" priority src={scanlines} />
-        <Image className={Overlay2} alt="crt overlay" priority src={scanlines} />
-        <Image className={Overlay3} alt="crt overlay" priority src={scanlines} />
-        <Image className={Overlay4} alt="crt overlay" priority src={scanlines} />
+        <Image className={Overlay} alt="crt overlay" src={scanlines} />
+        <Image className={Overlay2} alt="crt overlay" src={scanlines} />
+        <Image className={Overlay3} alt="crt overlay" src={scanlines} />
+        <Image className={Overlay4} alt="crt overlay" src={scanlines} />
         <main className={Main}>
           <NavBar />
           <SearchBar
