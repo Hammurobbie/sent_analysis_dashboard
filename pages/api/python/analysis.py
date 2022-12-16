@@ -46,23 +46,23 @@ else:
     words_arr = [var for var in words_arr if var.lower(
     ) not in pointless_words and len(var) > 2 and not var.isdigit()]
     for w in words_arr:
-        wL = w.lower()
-        c = words_arr.count(wL) + words_arr.count(w)
-        if (c > word1[1]):
-            word1 = [wL, c]
-        elif (c > word2[1] and wL != word1[0] and wL != word3[0]):
-            word2 = [wL, c]
-        elif (c > word3[1] and wL != word1[0] and wL != word2[0]):
-            word3 = [wL, c]
+        c = words_arr.count(w.lower())
+        if(c > word1[1]):
+            word1 = [w, c]
+        elif(c > word2[1] and w != word1[0] and w != word3[0]):
+            word2 = [w, c]
+        elif(c > word3[1]and w != word1[0] and w != word2[0]):
+            word3 = [w, c]
 
         if len(all_word_counts) == 0:
-            all_word_counts.append({"value": w.lower(), "count": 1})
-        elif not any(obj["value"] == w.lower() for obj in all_word_counts):
             all_word_counts.append({"value": w.lower(), "count": 1})
         else:
             for i, obj in enumerate(all_word_counts):
                 if obj["value"] == w.lower():
                     all_word_counts[i]["count"] += 1
+                    break
+                else:
+                    all_word_counts.append({"value": w.lower(), "count": 1})
                     break
 
     top_words = [word1, word2, word3]

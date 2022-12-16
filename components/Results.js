@@ -25,7 +25,12 @@ const Results = ({ curResult, typedString }) => {
     } else setTopResult("positive");
   }, [curResult]);
 
+  const toPercentage = (value) => {
+    return (value * 100).toFixed(2) + '%'
+  }
+
   return (
+    <>
     <div className={ResultsCont}>
       <div
         className={
@@ -53,18 +58,18 @@ const Results = ({ curResult, typedString }) => {
                 <li
                   style={{ color: topResult === "positive" ? "#7ab35b" : "" }}
                 >
-                  Positive: <span>{curResult?.average_scores?.positive}</span>
+                  Positive: <span>{toPercentage(curResult?.average_scores?.positive)}</span>
                 </li>
                 <li style={{ color: topResult === "neutral" ? "#cf9529" : "" }}>
                   Neutral:{" "}
                   <span style={{ marginLeft: "9.5px" }}>
-                    {curResult?.average_scores?.neutral}
+                    {toPercentage(curResult?.average_scores?.neutral)}
                   </span>
                 </li>
                 <li
                   style={{ color: topResult === "negative" ? "#e63e1c" : "" }}
                 >
-                  Negative: <span>{curResult?.average_scores?.negative}</span>
+                  Negative: <span>{toPercentage(curResult?.average_scores?.negative)}</span>
                 </li>
               </ul>
             </div>
@@ -94,6 +99,8 @@ const Results = ({ curResult, typedString }) => {
         )}
       </div>
     </div>
+    {!!curResult?.average_scores ?  (<a  href="/word-cloud" target="_blank" rel="noopener noreferrer " className={{fontSize: "2rem"}}>Word Cloud</a>) : null}
+    </>
   );
 };
 
