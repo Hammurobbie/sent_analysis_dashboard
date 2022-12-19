@@ -9,7 +9,7 @@ def getTweets(search_term):
 
     filters = " lang:en -Perez -is:retweet" + hilton_accounts
     query = '#' + search_term + filters
-    count = 30
+    count = 10
 
     client = tweepy.Client(bearer_token=bearer_token)
 

@@ -89,5 +89,8 @@ pointless_words = [
     "app",
     "berlinhotels",
     "much",
-    "other"
+    "other",
+    "glaad",
+    "link",
+    "shot",
 ]
